@@ -11,7 +11,7 @@
 
     <meta name="author" content="erikpier">
 
-    <style>
+<style>
     /* =========================================================
         CONFIGURATION GÉNÉRALE
     ========================================================= */
@@ -37,7 +37,7 @@
         --col2-width: 65px;
         --col3-width: 50px;
 
-        --col2-left: 230px;
+        --col2-left: 230px;  /* Égal à --col1-width */ 
 
         --bg-fond: darkslategray;
         --bg-fond1: #1b13b0;
@@ -50,6 +50,7 @@
         --texte4: yellow;
         --texte5: #b7ff00;
         --texte6: #351c1c;
+        --texte7: var(--bg-header-1);
 
         --lien: #42a9ed;
         --lien1: #a8d6f5;
@@ -82,9 +83,9 @@
         margin: 0;
         padding: 5px;
         box-sizing: border-box;
-        overflow: auto !important;
+        overflow: auto !important; /* Permet le défilement global de la page si le conteneur déborde*/
         font-family: Segoe UI, Arial, Helvetica, sans-serif;
-        touch-action: manipulation !important;
+        touch-action: manipulation !important; /* Autorise tous les gestes natifs du navigateur (zoom + scroll) */
         background: var(--bg-fond);
         font-size: 13px;
     }
@@ -93,9 +94,9 @@
         TITRES
     ========================================================= */
     h1 {
-        background: var(--bg-fond);
+        background: var(--bg-fond); /* Fond pour éviter la transparence */
         position: sticky;
-        flex-shrink: 0;
+        flex-shrink: 0; /* Empêche les titres de se réduire si la fenêtre est petite */
         margin: 0 0 6px 0;
         font-size: 1.5rem;
         color: var(--texte1);
@@ -113,30 +114,33 @@
     ========================================================= */
     .table-container {
         width: 100%;
-        overflow: auto !important;
-        padding-right: 15px;
-        padding-bottom: 15px;
-        max-height: 75vh !important;
-        flex-grow: 1;
-        margin-bottom: 15px !important;
-        -webkit-overflow-scrolling: touch;
+        overflow: auto !important; /* Déclenche les défilements H/V */
+        padding-right: 15px; /* Espace entre le tableau et la barre de défilement droite */
+        padding-bottom: 15px; /* Espace entre le tableau et la barre de défilement bas */
+        max-height: 75vh !important; /* Garde de l'espace sur mobile pour défiler la page globale */
+        flex-grow: 1;  /* Remplit tout l'espace vertical disponible */
+        margin-bottom: 15px !important; /* Marge externe sous le conteneur */
+        /* --- OPTIMISATION FLUIDITÉ / ACCÉLÉRATION MATÉRIELLE --- */
+        -webkit-overflow-scrolling: touch; /* Active le défilement matériel fluide tactile */
         touch-action: pan-x pan-y pinch-zoom !important;
-        will-change: scroll-position;
-        transform: translateZ(0);
+        will-change: scroll-position; /* Prépare le navigateur au défilement */
+        transform: translateZ(0); /* Force le rendu par la carte graphique (GPU) */ 
     }
 
     /* =========================================================
-        TABLE
+        TABLE (Calcul de largeur strict) ---
     ========================================================= */
     table {
-        border-collapse: separate;
+        border-collapse: separate; /* Obligatoire pour éviter les bugs de borders sticky */
         border-spacing: 0;
+        /* Correction des bordures extérieures pour le mode 'separate' */
         border-top: var(--border1);
         border-left: var(--border1);
         border-right: var(--border-groupe);
+        /* INDISPENSABLE pour les colonnes variables : la table s'adapte à son contenu */
         width: max-content !important;
         min-width: 900px !important;
-        table-layout: auto !important;
+        table-layout: auto !important; /* Permet l'autofit sur les colonnes variables */
     }
 
     th,
@@ -145,7 +149,7 @@
         padding: 7px 10px;
         border-right: var(--border1);
         border-bottom: var(--border1);
-        white-space: nowrap;
+        white-space: nowrap; /* Empêche le texte de sauter à la ligne involontairement */
         color: var(--texte3);
         font-weight: 500;
     }
@@ -190,7 +194,7 @@
     tbody td:nth-child(1) {
         position: sticky;
         left: 0;
-        background: fixed;
+        background: fixed; /* Assure que le fond reste fixe lors du défilement */
         width: var(--col1-width);
         min-width: var(--col1-width);
         max-width: var(--col1-width);
@@ -248,19 +252,19 @@
     ========================================================= */
     .dynamic-col,
     tbody td:not(:nth-child(-n+3)) {
-        width: max-content !important;
-        white-space: nowrap;
+        width: max-content !important; /* Force l'Autofit sur le texte le plus long */
+        white-space: nowrap; /* Empêche le texte de sauter à la ligne involontairement */
         background-color: var(--bg-header-2);
     }
 
     /* =========================================================
         ALTERNANCE DES LIGNES
     ========================================================= */
-    tbody tr:nth-child(odd) td:not(:nth-child(-n+3)) {
+    tbody tr:nth-child(odd) td:not(:nth-child(-n+3)) { /* Lignes impaires */
         background: var(--ligne1);
     }
 
-    tbody tr:nth-child(even) td:not(:nth-child(-n+3)) {
+    tbody tr:nth-child(even) td:not(:nth-child(-n+3)) { /* Lignes paires */
         background: var(--ligne2);
     }
 
@@ -315,7 +319,7 @@
     }
 
     /* =========================================================
-        SURVOL
+        SURVOL (HOVER) ---
     ========================================================= */
     tbody tr:hover td:not(:nth-child(-n+3)) {
         background-color: var(--survol) !important;
@@ -327,6 +331,8 @@
     /* =========================================================
         COLONNES DE CHOIX
     ========================================================= */
+    /* En ciblant directement les "td" qui ont la classe "col-choix" à l'intérieur du "tbody",
+       le navigateur donne la priorité absolue à cette couleur, qu'il s'agisse d'une ligne paire ou impaire */    
     tbody td.col-choix {
         color: var(--texte5) !important;
         font-weight: 600 !important;
@@ -337,7 +343,7 @@
     ========================================================= */
     .groupe-vide {
         background-color: var(--bg-fond1) !important;
-        opacity: 0.6;
+        opacity: 0.6; /* Optionnel : estompe légèrement la zone */
     }
 
     /* =========================================================
@@ -347,17 +353,14 @@
         border-top: var(--border2);
     }
 
-
     thead tr:nth-child(1) th:nth-child(2) {
         border-left: var(--border2) !important;
         border-right: var(--border3) !important;
     }
 
-
     thead tr:nth-child(1) th:nth-child(3) {
         border-right: var(--border3) !important;
     }
-
 
     thead tr:nth-child(2) th:nth-child(4),
     tbody tr td:nth-child(4) {
@@ -428,23 +431,22 @@
     ========================================================= */
     thead tr:nth-child(1) a {
         display: inline-block;
-        width: auto;
+        width: auto; /* Permet de survoler toute la cellule si le texte est long */
     }
 
     table td a,
     table th a:hover {
         color: var(--texte6);
-        background-color: var(--bg-fond3);
+        background-color: var(--bg-fond3); /* Devient un peu plus clair au survol */
         text-decoration: underline;
     }
 
     .lien {
         text-decoration: none;
-        padding: 3px 5px;
-        transition: background-color 0.2s ease;
-        color: var(--texte8);
+        padding: 3px 5px; /* Optionnel : ajoute un espace autour du texte */
+        transition: background-color 0.2s ease; /* Optionnel : rend l'apparition fluide */
+        color: var(--lien1) !important;
     }
-
 
     .lien:hover {
         background-color: var(--bg-fond3);
@@ -534,7 +536,7 @@
         color: var(--titre);
         text-decoration: underline;
     }
-
+    
     /* Bouton X */
     .info-modal-close {
         position: absolute;
@@ -576,20 +578,20 @@
     }
 
     /* =========================================================
-        PC
+        PC ADAPTATION ORDINATEUR (ECRANS DE PC) ---
     ========================================================= */
     @media screen and (min-width: 769px) {
         html,
         body {
             height: 100vh;
-            overflow: hidden;
+            overflow: hidden; /* Supprime l'ascenseur de la page web globale sur PC */
             display: flex;
             flex-direction: column;
         }
 
         .table-container {
             flex-grow: 1;
-            max-height: none;
+            max-height: none; /* Le tableau prend tout le reste de l'écran */
         }
     }
 
@@ -599,11 +601,12 @@
     @media screen and (max-height: 500px)
         and (orientation: landscape) {
         .table-container {
+        /* On réduit la hauteur max pour laisser respirer le bas de la page */    
             max-height: 65vh !important;
-            margin-bottom: 15px !important;
+            margin-bottom: 15px !important; /* Marge externe sous le conteneur */
         }
 
-        body {
+        body { /* Espace d'aisance supplémentaire en bas du body pour le défilement global */
             padding-bottom: 20px !important;
         }
     }
