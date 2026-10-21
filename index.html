@@ -54,6 +54,7 @@
 
         --lien: #42a9ed;
         --lien1: #a8d6f5;
+        --lien2: #453cf4;
 
         --titre: #0b4f8a;
 
@@ -73,7 +74,13 @@
 
         --ombre: 0 2px 8px rgba(0,0,0,.12);
     }
-
+    .rouge { color: red; }
+    
+    .vert { color: green; }  
+    
+    .orange { color: orange; }
+    
+    .bleu { color: blue; }   
     /* =========================================================
         HTML / BODY
     ========================================================= */
@@ -164,9 +171,11 @@
     .sticky-row-1 th {
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 20;
         color: var(--text-header-1);
         font-weight: 500;
+        border-top: var(--border2);
+        background-color: var(--bg-header-1);
     }
 
     .sticky-row-1 th.sticky-parent {
@@ -181,7 +190,7 @@
     .sticky-row-2 th {
         position: sticky;
         top: var(--line1-height);
-        z-index: 10;
+        z-index: 15;
         background-color: var(--bg-header-2);
         color: var(--text-header-1);
         font-weight: 500;
@@ -467,9 +476,9 @@
         padding: 0;
         border: 1px solid rgba(255,255,255,0.65);
         border-radius: 50%;
-        background: rgba(255,255,255,0.12);
+        background: rgba(245, 103, 8, 0.948);
         color: white;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         line-height: 1;
         cursor: pointer;
@@ -478,8 +487,8 @@
     }
 
     .info-btn:hover {
-        background: white;
-        color: var(--bg-header-1);
+        background: rgb(182, 231, 84);
+        color: rgb(211, 19, 19);
         transform: scale(1.08);
     }
 
@@ -512,15 +521,15 @@
         border: 2px solid var(--bg-header-1);
         border-radius: 10px;
         box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.5;
     }
 
-    .info-modal-title {
+    .info-modal-title { 
         margin: 0 35px 15px 0;
         color: var(--titre);
-        font-size: 1.3rem;
-        font-weight: 600;
+        font-size: 1.4rem;
+        font-weight: 625;
     }
 
     .info-modal-text {
@@ -528,12 +537,14 @@
     }
 
     .info-modal-content a {
-        color: var(--lien);
+        color: var(--lien2);
         font-weight: 600;
     }
 
     .info-modal-content a:hover {
         color: var(--titre);
+        background-color: var(--bg-fond3);
+        transition: background-color 0.15s ease;
         text-decoration: underline;
     }
     
@@ -630,6 +641,23 @@
         }
     }
 
+    /* =========================================================
+        TOTALISATEUR
+      ========================================================= */
+    .ligne-totaux td {
+        font-weight: 700;
+        text-align: center;
+        border-top: var(--border1,) !important;
+        background: var(--fond-entete,);
+    }
+
+    .separateur-inscriptions {
+        margin: 1.25rem 0 0.5rem;
+        padding: 0.6rem 0.75rem;
+        border-top: 2px solid currentColor;
+        font-size: 1.05rem;
+    }
+
 </style>
 </head>
 
@@ -650,7 +678,7 @@
         LIENS
         ===================================================== -->
     <h2>
-        &#8195;&#8195;&#8195;&#8195;&#8195;
+        &#8195;&#8195;&#8195;
         Lien :
         <a class="lien"
             href="https://erikpier2.github.io/ycone_2026/"
@@ -658,7 +686,7 @@
             <i>HISTORIQUE</i>
         </a>
         <span>
-            &#8195;&#8195;&#8195;&#8195;&#8195;&#8195;
+            &#8195;&#8195;&#8195;&#8195;&#8195;
         </span>
         Calendrier de la Ligue :
         <a class="lien"
@@ -666,6 +694,21 @@
             target="_blank">
             <i>LBFCO</i>
         </a>
+        <span>
+            &#8195;&#8195;&#8195;&#8195;&#8195;
+        </span>
+
+        <!-- La balise <a> rend tout ce qu'elle contient cliquable -->
+        <a id="lienAgenda" href="#" target="_blank" rel="noopener"
+            title="Consulter l'agenda FFCO"> 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32" style="vertical-align: middle; border: 1px solid #ccc;">
+                <!-- Triangle supérieur gauche (Blanc) -->
+                <polygon points="0,0 100,0 0,100" fill="#FFFFFF" />
+                <!-- Triangle inférieur droit (Orange) -->
+                <polygon points="100,0 100,100 0,100" fill="#EE6600" />
+            </svg>
+        </a>
+        Agenda FFCO
     </h2>
 
     <!-- =====================================================
@@ -717,7 +760,26 @@
         JAVASCRIPT
         ===================================================== -->
     <script>
+        // Date du jour
+        const aujourdHui = new Date();
 
+        // Format yyyy-mm-dd en heure locale
+        const annee = aujourdHui.getFullYear();
+        const mois = String(aujourdHui.getMonth() + 1).padStart(2, '0');
+        const jour = String(aujourdHui.getDate()).padStart(2, '0');
+        const dateDebut = `${annee}-${mois}-${jour}`;
+
+        // Dernier jour de l'année suivante
+        const dateFin = `${annee + 1}-12-31`;
+
+        // Construction du lien
+        const url = 
+        `https://api.ffcorientation.fr/iframe/agenda/liste/?du=${dateDebut}&au=${dateFin}&types=cou&page=1`;
+
+        document.getElementById('lienAgenda').href = url;
+        console.log("Clic détecté sur la balise d'orientation");
+    </script>    
+    <script>
     /* =========================================================
         FICHIERS
       ========================================================= */
@@ -730,48 +792,18 @@
         DICTIONNAIRE DES LIENS DU TABLEAU
       ========================================================= */
     const liensPersonnalises = {
-        "LD Nemours(77) 4/10":"https://drive.google.com/file/d/1QrOnt-HcuTtvGSR5_7xQkPmd7BuNOapq/view?usp=sharing",
         "1.Rés.": "",      
         "1.Pl.": "",
 
-        "NSE Sprint Lambesc(13) 3/10":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Annonce-de-course-CO-a-pied-Nationale-LAMBESC-v1.5.pdf",
-        "2.Hor.":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Horaires-de-depart-par-club-sprint-Lambesc.html",
+        "2.Hor.":"",
         "2.Rés.": "",
-        "2.Pl.":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Horaires-de-depart-par-categorie-sprint-Lambesc.html",
-        "2.écart":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Nationale-SE-2026-SPRINT-consignes-de-course.pdf",
+        "2.Pl.":"",
+        "2.écart":"",
 
-        "NSE LD Meyrargues(13) 4/10":"https://nse2026.paca-co.fr/wp-content/uploads/2026/08/Annonce-de-course-CO-a-pied-Nationale-Meyrargues-v1.3.pdf",
-        "3.Hor.":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Horaires-de-depart-par-club-LD-Meyrargues-v2.html",
+        "3.Hor.":"",
         "3.Rés.": "",
-        "3.Pl.":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Horaires-de-depart-par-categorie-LD-Meyrargues-v2.html",
-        "3.écart":"https://nse2026.paca-co.fr/wp-content/uploads/2026/09/Nationale-LD-Meyrargues-Consignes-de-course-Bulletin-2.pdf",
-
-        "Sprint R. Quetigny(21) 10/10":"https://drive.google.com/file/d/1AGCc6prWtvzRJWoXNc-l1V4T1g1IDAZt/view?usp=sharing",
-        "4.Rés.": "",
-        "4.Pl.": "",
-
-        "LD Fontainebleau(77) 11/10":"https://drive.google.com/file/d/1_A_gRsILoPcEk75u7kgxuagqv87XJruI/view?usp=sharing",
-        "5.Hor.":"https://docs.google.com/spreadsheets/d/1_buiQC9nuaOD565CCXMM1qWBLu9UND8eTbGLa9zM3LE/edit?gid=0#gid=0",
-        "5.Rés.": "",
-        "5.Pl.": "",
-
-        "Sprint Avallon(89) 17/10":"https://drive.google.com/file/d/1CfR5-hz1Z5UPUf_LA1VVl3PRVnEynf5w/view?usp=sharing",
-        "6.Rés.": "",
-        "6.Pl.": "",
-
-        "CDL Nuit Avallon(89) 17/10":"https://drive.google.com/file/d/1fpglAc678aQYIk8uwl4M8PGpfdOdA1gj/view?usp=sharing",
-        "7.Circ.": "",
-        "7.Hor.": "",
-        "7.Rés.": "",
-        "7.écart": "",
-
-        "8.Circ.": "",
-        "8.Hor.": "",
-        "8.écart": "",
-
-        "9.Circ.": "",
-        "9.Hor.": "",
-        "9.écart": "",
+        "3.Pl.":"",
+        "3.écart":"",
     };
 
     /* =========================================================
@@ -836,53 +868,38 @@
             const textData =
                 decoder.decode(buffer);
 
-            const lines =
-                textData.split(/\r?\n/);
+            const lignesCsv = textData
+                .split(/\r?\n/)
+                .filter(line => line.trim() !== "" && !/^;+$/.test(line.trim()));
 
-            if (lines.length === 0) {
-
-                throw new Error(
-                    "Le fichier CSV est vide."
-                );
+            if (lignesCsv.length < 2) {
+                throw new Error("Le fichier CSV ne contient pas les deux lignes d'en-tête attendues.");
             }
 
-            /* =================================================
-                DÉTECTION DES COLONNES AVEC DONNÉES
-              ================================================= */
-            const colonnesAvecDonnees =
-                new Set();
-
-            lines.forEach(
-                (line, rowIndex) => {
-
-                    if (
-                        line.trim() === "" ||
-                        /^;+$/.test(line.trim())
-                    ) {
-                        return;
-                    }
-
-                    if (rowIndex >= 2) {
-
-                        const cells =
-                            line.split(';');
-
-                        cells.forEach(
-                            (cellValue, colIndex) => {
-
-                                if (
-                                    cellValue.trim() !== ""
-                                ) {
-
-                                    colonnesAvecDonnees
-                                        .add(colIndex);
-                                }
-                            }
-                        );
-                    }
-                }
+            const lignesEntete = lignesCsv.slice(0, 2);
+            const lignesDonnees = lignesCsv.slice(2);
+            const marqueur = "INSCRIPTIONS COMPLEMENTAIRES";
+            const indexMarqueur = lignesDonnees.findIndex(line =>
+                (line.split(';')[0] || "").trim().toLocaleUpperCase('fr-FR') === marqueur
             );
 
+            let lignesInitiales;
+            let lignesComplementaires;
+            if (indexMarqueur >= 0) {
+                lignesInitiales = lignesDonnees.slice(0, indexMarqueur);
+                lignesComplementaires = lignesDonnees.slice(indexMarqueur + 1);
+            } else {
+                lignesInitiales = lignesDonnees;
+                lignesComplementaires = [];
+            }
+
+            const toutesLesLignesParticipants = [...lignesInitiales, ...lignesComplementaires];
+            const colonnesAvecDonnees = new Set();
+            toutesLesLignesParticipants.forEach(line => {
+                line.split(';').forEach((cellValue, colIndex) => {
+                    if (cellValue.trim() !== "") colonnesAvecDonnees.add(colIndex);
+                });
+            });
 
             /* =================================================
                 TEST D'ACTIVITÉ D'UN GROUPE DE 5
@@ -904,17 +921,36 @@
                 return false;
             }
 
-            /* =================================================
-                CONSTRUCTION DU TABLEAU
-              ================================================= */
-            let htmlRaw =
-                "<table><thead>";
+            /* =========================================================
+                TEST : LA LIGNE POSSÈDE-T-ELLE UNE DONNÉE VISIBLE ?
+            ========================================================= */
+            function ligneAUneDonneeVisible(cells) {
+            
+                for (let debutGroupe = 3;
+                    debutGroupe < cells.length;
+                    debutGroupe += 5) {
+                    
+                    // On ne regarde que les groupes qui restent visibles
+                    if (!estGroupeActif(debutGroupe)) {
+                        continue;
+                    }
+                
+                    // Recherche d'au moins une cellule réellement remplie
+                    for (let i = 0; i < 5; i++) {
+                    
+                        const index = debutGroupe + i;
+                    
+                        if (index < cells.length &&
+                            cells[index].trim() !== "") {
+                            
+                            return true;
+                        }
+                    }
+                }
+            
+                return false;
+            }
 
-            let isBodyOpen = false;
-
-            /* =================================================
-                COLONNES DE CHOIX
-              ================================================= */
             const colonnesDeChoix = [
                 4, 9, 14, 19, 24,
                 29, 34, 39, 44,
@@ -923,57 +959,66 @@
                 89, 94, 99
             ];
 
-            /* =================================================
-                LECTURE DES LIGNES
-              ================================================= */
-            lines.forEach(
-                (line, rowIndex) => {
+            function construireTableau(lignesSection, ajouterTotaux) {
+                let html = "<table><thead>";
+                let isBodyOpen = false;
+                const lignesPourTableau = [...lignesEntete, ...lignesSection];
+                let ligneTotaux = null;
+
+                if (ajouterTotaux) {
+                    const nombreColonnes = Math.max(
+                        3,
+                        ...toutesLesLignesParticipants.map(line => line.split(';').length),
+                        ...lignesEntete.map(line => line.split(';').length)
+                    );
+                    const cellulesTotaux = Array(nombreColonnes).fill("");
+                    cellulesTotaux[0] = "TOTAL";
+                    for (let debutGroupe = 3; debutGroupe < nombreColonnes; debutGroupe += 5) {
+                        let total = 0;
+                        lignesSection.forEach(line => {
+                            const cells = line.split(';');
+                            if (ligneAUneDonneeVisible(cells) && (cells[debutGroupe] || "").trim() !== "") total++;
+                        });
+                        cellulesTotaux[debutGroupe] = String(total);
+                    }
+                    ligneTotaux = cellulesTotaux.join(';');
+                    lignesPourTableau.push(ligneTotaux);
+                }
+
+                lignesPourTableau.forEach((line, rowIndex) => {
 
                     /* -----------------------------------------
                         IGNORE LES LIGNES VIDES
                       ----------------------------------------- */
-                    if (
-                        line.trim() === "" ||
-                        /^;+$/.test(line.trim())
-                    ) {
-
-                        return;
-                    }
-
                     const cells =
                         line.split(';');
+                    /* Passage au tbody dès la première ligne de données */
+                    if (rowIndex >= 2 && !isBodyOpen) {
+                        html += "</thead><tbody>";
+                        isBodyOpen = true;
+                    }    
+
+                    /* =================================================
+                        MASQUAGE DES PERSONNES SANS DONNÉE VISIBLE
+                      ================================================= */
+                    const isTotalRow = ligneTotaux !== null && line === ligneTotaux;
+                    if (rowIndex >= 2 && !isTotalRow && !ligneAUneDonneeVisible(cells)) {
+                        return;
+                    }    
 
                     /* -----------------------------------------
                         CLASSES DES LIGNES D'EN-TÊTE
                       ----------------------------------------- */
                     let rowClass = "";
-
-                    if (rowIndex === 0) {
-
-                        rowClass =
-                            ' class="sticky-row-1"';
-
+                    if (isTotalRow) {
+                        rowClass = ' class="ligne-totaux"';
+                    } else if (rowIndex === 0) {
+                        rowClass = ' class="sticky-row-1"';
                     } else if (rowIndex === 1) {
-
-                        rowClass =
-                            ' class="sticky-row-2"';
+                        rowClass = ' class="sticky-row-2"';
                     }
 
-                    /* -----------------------------------------
-                        PASSAGE AU TBODY
-                      ----------------------------------------- */
-                    if (
-                        rowIndex === 2 &&
-                        !isBodyOpen
-                    ) {
-
-                        htmlRaw +=
-                            "</thead><tbody>";
-
-                        isBodyOpen = true;
-                    }
-
-                    htmlRaw +=
+                    html +=
                         `<tr${rowClass}>`;
 
                     /* -----------------------------------------
@@ -1344,7 +1389,7 @@
                         /* ---------------------------------------------
                             CRÉATION DE LA CELLULE
                           --------------------------------------------- */
-                        htmlRaw +=
+                        html +=
                             `<${cellTag}
                                 class="${cellClass}"
                                 ${colspanAttr}>
@@ -1353,18 +1398,17 @@
 
                     }
 
-                    htmlRaw += "</tr>";
+                    html += "</tr>";
+                });
+                html += isBodyOpen ? "</tbody></table>" : "</thead></table>";
+                return html;
+            }
 
-                }
-            );
-
-            /* =========================================================
-                FIN DU TABLEAU
-              ========================================================= */
-            htmlRaw +=
-                isBodyOpen
-                    ? "</tbody></table>"
-                    : "</thead></table>";
+            let htmlRaw = construireTableau(lignesInitiales, true);
+            if (lignesComplementaires.length > 0) {
+                htmlRaw += '<div class="separateur-inscriptions"><strong>Inscriptions complémentaires</strong></div>';
+                htmlRaw += construireTableau(lignesComplementaires, false);
+            }
 
             /* =========================================================
                 AFFICHAGE
@@ -1659,7 +1703,7 @@
 <p style="color:#e0dada">
 
     Tableau des horaires et résultats
-    mis à jour le 03/10/2026 07:24
+    mis à jour le 14/10/2026 10:41
 
 </p>
 </body>
