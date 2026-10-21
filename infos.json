@@ -123,54 +123,58 @@
     "textes": [
       "Course régionale Sprint à Avallon(89)",
       "Etape 13 de la Coupe de Ligue",
-      "Limite d'inscription: samedi 10 octobre 2026 à 23h59"     
+      ""     
         ],
     "liens": [
       {
-        "texte": "Annonce",        
-        "url": "https://drive.google.com/file/d/1FLz5XkTfCK3YJNzttsfIDcWp4yXR7pg3/view?usp=sharing"
+        "texte": "Résultats Circuits",
+        "url": "https://drive.google.com/file/d/1CG-l-nuBvzM9Wt7-IIxU86SqP886DLh7/view?usp=sharing"
       },
       {
-        "texte": "Horaires de départ",
-        "url": "https://drive.google.com/file/d/1ANJNv8z6RYSa07MYGhVLjRcvKx4E2HAM/view?usp=sharing"
-      },
-      {
-        "texte": "Consignes de course",
-        "url": "https://drive.google.com/file/d/1Mxvro-KYAtPEMHjSNOvdo6hhOLtaVdHz/view?usp=sharing"
+        "texte": "Résultats Temps intermédiaires",
+        "url": "https://drive.google.com/file/d/1EUMxAW1gAIfwfoXKkECjoEwJSO343W_9/view?usp=sharing"
       },      
       {
-          "texte":"ffco",
-          "url":"https://api.ffcorientation.fr/iframe/courses/103642/"
+        "texte": "",        
+        "url": ""
+      },
+      {
+          "texte":"Annonce",
+          "url":"https://drive.google.com/file/d/1FLz5XkTfCK3YJNzttsfIDcWp4yXR7pg3/view?usp=sharing"
       }
     ],
-    "maj": "14/10/2026 10:40"
+    "maj": "18/10/2026 15:44"
   },
   "groupe7": {
     "titre": "CDL Nuit Avallon(89) 17/10 ",
     "textes": [
       "Course nocturne : Championnat de Ligue de Nuit à Avallon(89)",
       "Etape 14 de la Coupe de Ligue",
-      "Limite d'inscription: samedi 10 octobre 2026 à 23h59"
+      ""
     ],
     "liens": [
       {
-        "texte": "Annonce",        
-        "url": "https://drive.google.com/file/d/1Bf6vpJS1ldQwt2r3KCh9taw9fNnX-yIv/view?usp=sharing"
+        "texte": "Résultats Circuits",
+        "url": "https://drive.google.com/file/d/1Oa2ZdLrXMnR4S2KHXv0G58zPeunLXgep/view?usp=sharing"
       },
       {
-        "texte": "Horaires de départ",
-        "url": "https://drive.google.com/file/d/1T6QNkoLM0_MdZ_zglgcP1YQZcFRzDO6g/view?usp=sharing"
+        "texte": "Résultats Catégories",        
+        "url": "https://drive.google.com/file/d/1DgWCpMXVYhawSf76TbusMsATSBp_zQHa/view?usp=sharing"
       },
       {
-        "texte": "Consignes de course",
-        "url": "https://drive.google.com/file/d/11A-FFYJvez1XcvuZbtU5NbMiAJxV1J92/view?usp=sharing"
-      },      
+        "texte": "Résultats Temps intermédiaires",
+        "url": "https://drive.google.com/file/d/1dU-5mU0R3vSN8begmcopXcoBlT-8gQwA/view?usp=sharing"
+      },
       {
-        "texte":"ffco",
-        "url":"https://api.ffcorientation.fr/iframe/courses/103643/"
+        "texte": "",
+        "url": ""
+      },          
+      {
+        "texte":"Annonce",
+        "url":"https://drive.google.com/file/d/1Bf6vpJS1ldQwt2r3KCh9taw9fNnX-yIv/view?usp=sharing"
       }
     ],
-    "maj": "14/10/2026 10:40"
+    "maj": "18/10/2026 15:44"
   },
     "groupe8": {
     "titre": "MD régionale Col de la République(42) 21/10 ",
@@ -179,9 +183,25 @@
     ],
     "liens": [
       {
+        "texte": "Site Web",        
+        "url": "https://cdco42.fr/site/"
+      },
+      {
         "texte": "Annonce",        
         "url": "https://drive.google.com/file/d/1QQMk4eja6SP1h-yttIh8ubPRTba1Dr4O/view?usp=sharing"
       },
+      {
+        "texte": "Horaires de départ",        
+        "url": "https://cdco42.fr/site/wp-content/uploads/2026/10/Departs-par-clubs-V2-21-octobre.pdf"
+      },
+      {
+        "texte": "Consignes de course",        
+        "url": "https://cdco42.fr/site/wp-content/uploads/2026/10/Consignes-de-course-22.pdf"
+      },
+      {
+        "texte": "ancienne carte",        
+        "url": "https://cdco42.fr/site/wp-content/uploads/2026/10/Col-de-la-Rep-1-1073x1536.jpg"
+      },                    
       {
         "texte": "Liveresultats",
         "url": "https://liveresultat.orientering.se/beta/?lang=fr"
@@ -191,7 +211,7 @@
         "url":"https://api.ffcorientation.fr/iframe/courses/107022/"
       }
     ],
-    "maj": "08/10/2026 07:21"
+    "maj": "20/10/2026 15:56"
   },
     "groupe9": {
     "titre": "MD départementale Col de la République(42) 22/10",
@@ -200,9 +220,25 @@
     ],
     "liens": [
       {
+        "texte": "Site Web",        
+        "url": "https://cdco42.fr/site/"
+      },
+      {
         "texte": "Annonce",        
         "url": "https://drive.google.com/file/d/1wKI8gvIWXvrZM54r7w7WbzKpy3kJ8qqz/view?usp=sharing"
+      },      
+      {
+        "texte": "Horaires de départ",        
+        "url": "https://cdco42.fr/site/wp-content/uploads/2026/10/Departs-par-clubs-V2-22-octobre.pdf"
       },
+      {
+        "texte": "Consignes de course",        
+        "url": "https://cdco42.fr/site/wp-content/uploads/2026/10/Consignes-de-course-22.pdf"
+      },
+      {
+        "texte": "ancienne carte",        
+        "url": "https://cdco42.fr/site/wp-content/uploads/2026/10/Col-de-la-Rep-1-1073x1536.jpg"
+      },                  
       {
         "texte": "Liveresultats",
         "url": "https://liveresultat.orientering.se/?lang=fr"
@@ -212,7 +248,7 @@
         "url":"https://api.ffcorientation.fr/iframe/courses/107023/"
       }
     ],
-    "maj": "07/10/2026 07:31"
+    "maj": "20/10/2026 15:57"
   },
     "groupe10": {
     "titre": "Pélussin City Race (42) 23/10",
@@ -225,6 +261,18 @@
         "url": "https://oe4203.wordpress.com/pelussin-city-race/"
       },
       {
+        "texte": "Horaires de départ",        
+        "url": "https://jolatomme.alwaysdata.net/competition/5/start-list/?view=club#group-8903-8903bf-ycone-sens"
+      },
+      {
+        "texte": "Infos techniques",        
+        "url": "https://oe4203.wordpress.com/pelussin-city-race/#informations"
+      },
+      {
+        "texte": "",        
+        "url": ""
+      },                    
+      {
         "texte": "Liveresultats",
         "url": "https://liveresultat.orientering.se/?lang=fr"
       },
@@ -236,9 +284,9 @@
     "maj": "08/10/2026 07:23"
   },
     "groupe11": {
-    "titre": "Sprint Open & Chpt de France Sprint (qualification)",
+    "titre": "Sprint Open & CF Saint-Etienne(42) ==> transfert sur Le Bessat 24/10",
     "textes": [
-      ""
+      "Toutes les informations relatives au changement d'épreuve suivront."
     ],
     "liens": [
             {
@@ -250,27 +298,39 @@
         "url": "https://cne2026.nose42.fr/cf-sprint"
       },
       {
-        "texte": "Map's",
-        "url": "https://www.google.com/maps/d/viewer?mid=1hRiSjUk4J13NMz9X6W0627THtVH-Lug&femb=1&ll=45.386339465732036%2C4.461886099999983&z=12"
-      },
-            {
-        "texte": "Fiche de qualifications",        
-        "url": "https://drive.google.com/file/d/1o-k9BNfFR4ZS2PZT7lmaSP6sw6HQG6p-/view?usp=sharing"
+        "texte": "INFORMATION Importante suite aux évènements actuels",        
+        "url": "https://drive.google.com/file/d/1-HJeRy8IH0ayfLnN60H7br6ASGwlYYCx/view?usp=sharing"
       },
       {
-        "texte":"ffco open",
-        "url":"https://api.ffcorientation.fr/iframe/courses/105688/"
+        "texte": "",        
+        "url": ""
       },
       {
-        "texte":"ffco Q",        
-        "url":"https://api.ffcorientation.fr/iframe/courses/108825/"
+        "texte": "",        
+        "url": ""
+      },                  
+      {
+        "texte": "",        
+        "url": ""
+      },
+      {
+        "texte":"",
+        "url":""
+      },
+      {
+        "texte":"",        
+        "url":""
+      },
+      {
+        "texte": "Qualifiés au titre du CN",
+        "url": "https://archives.ffcorientation.fr/media/cms_page_media/7947/CFSprint-qualifiés-CN_2026.pdf"
       },
       {
         "texte":"Liste FFCO des qualifiés au Chpt de France",
         "url":"https://www.ffcorientation.fr/wp-content/uploads/2026/10/championnat_de_france_sprint_2026_listesqualifies_categories.pdf"
       }
     ],
-    "maj": "09/10/2026 11:12"
+    "maj": "21/10/2026 15:06"
   },
     "groupe12": {
     "titre": "",
